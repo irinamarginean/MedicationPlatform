@@ -1,0 +1,55 @@
+<div class="container-fluid" style="margin: 30px; text-align: center;">
+  <h1>Add new caregiver</h1>
+</div>
+
+<form #registerCaregiverForm="ngForm" (ngSubmit)="registerCaregiver(registerCaregiverForm)">
+  <div class="container container-margin">
+      <div class="form-group">
+        <label for="firstname">First name</label>
+        <input type="text" class="form-control" #firstname="ngModel" id="firstname" required [(ngModel)]="model.firstName" name="firstname">
+      </div>
+
+      <div class="form-group">
+        <label for="lastname">Last name</label>
+        <input type="text"  class="form-control" #lastname="ngModel" id="lastname" type="text" [(ngModel)]="model.lastName" name="lastname">
+      </div>
+    
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select [(ngModel)]="model.gender" class="form-control" #gender="ngModel" id="gender" [(ngModel)]="model.gender" name="gender">
+        <option value='Male'>Male</option>
+        <option value='Female'>Female</option>
+        <option value='Other'>Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="birthdate">Birth date</label>
+      <input type="date"  class="form-control" #birthdate="ngModel" id="birthdate" [(ngModel)]="model.birthDate" name="birthdate"> 
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text"  class="form-control" #address="ngModel" id="address" [(ngModel)]="model.address" name="address"> 
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text"  class="form-control" #email="ngModel" id="description" [(ngModel)]="model.email" name="email"> 
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text"  class="form-control" #username="ngModel" id="username" [(ngModel)]="model.userName" name="username"> 
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password"  class="form-control" #password="ngModel" id="password" [(ngModel)]="model.password" name="password"> 
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add new caregiver</button>
+    </div>
+  </div>
+</form>

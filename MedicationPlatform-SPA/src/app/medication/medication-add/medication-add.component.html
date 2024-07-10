@@ -1,0 +1,32 @@
+<div class="container-fluid" style="margin: 30px; text-align: center;">
+  <h1>Add new medication</h1>
+</div>
+
+<form #addMedicationForm="ngForm" (ngSubmit)="addMedication(addMedicationForm)">
+  <div class="container container-margin">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="form-group">
+          <label for="med_name">Name</label>
+          <input type="text" class="form-control" #med_name="ngModel" id="med_name" required [(ngModel)]="model.name" name="med_name">
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4">
+        <div class="form-group">
+          <label for="quantity">Dosage</label>
+          <input type="text"  class="form-control" #quantity="ngModel" id="quantity" type="text" [(ngModel)]="model.dosage" name="quantity">
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="description">Side effects</label>
+      <input type="text"  class="form-control" #description="ngModel" id="description" [(ngModel)]="model.sideEffects" name="description"> 
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add new medication</button>
+    </div>
+  </div>
+</form>

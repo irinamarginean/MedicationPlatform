@@ -1,0 +1,44 @@
+<div class="container-fluid" style="margin: 30px; text-align: center;">
+  <h1>Patients list</h1>
+  <p>The list of patients registered in the system</p>
+</div>
+
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Last name</th>
+    <th scope="col">First name</th>
+    <th scope="col">Gender</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let patient of patients; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+      <strong> {{ patient.lastName }} </strong>
+    </td>
+    <td> {{ patient.firstName }} </td>
+    <td> {{ patient.gender }} </td>
+    <td> 
+      <button class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/patients/medication-plan/' + patient.id]">
+        Manage Medication Plans
+      </button>
+    </td>
+    <td> 
+      <button class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/patients/edit/' + patient.id]">
+        Edit
+      </button>
+    </td>
+    <td> 
+      <button class="btn btn-outline-danger my-2 my-sm-0" (click)="removePatient(patient.id)">
+        Remove
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

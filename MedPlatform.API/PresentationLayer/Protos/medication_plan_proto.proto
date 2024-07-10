@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "MedicationPlatform.API.Protos";
+
+import "google/api/annotations.proto";
+
+package medication_plan_downloader;
+
+// The greeting service definition.
+service MedicationPlanDownloader {
+  // Sends a greeting
+      rpc RequestMedicationPlanDownload (MedicationPlanRequest) returns (MedicationPlanReply) {
+        option (google.api.http) = {
+          get: "/v1/medication_plan_downloader/{id}"
+        };
+    }
+}
+
+// The request message containing the user's name.
+message MedicationPlanRequest {
+  string id = 1;
+}
+
+// The response message containing the greetings.
+message MedicationPlanReply {
+  float intakeIntervals = 1;
+  string startDate = 2;
+  string endTime = 3;
+  string medications = 4;
+}

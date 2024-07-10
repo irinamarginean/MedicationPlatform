@@ -1,0 +1,38 @@
+<div class="container-fluid" style="margin: 30px; text-align: center;">
+  <h1>Medication list</h1>
+  <p>The list of available medications</p>
+</div>
+
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Side effects</th>
+    <th scope="col">Dosage</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let medication of medications; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+      <strong> {{ medication.name }} </strong>
+    </td>
+    <td> {{ medication.sideEffects }} </td>
+    <td> {{ medication.dosage }} </td>
+    <td> 
+      <button class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/medications/edit/' + medication.id]">
+        Edit
+      </button>
+    </td>
+    <td> 
+      <button class="btn btn-outline-danger my-2 my-sm-0" (click)="removeMedication(medication.id)">
+        Remove
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

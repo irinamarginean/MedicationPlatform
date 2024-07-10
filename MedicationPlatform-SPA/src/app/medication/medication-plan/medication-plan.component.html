@@ -1,0 +1,87 @@
+<div *ngIf="isUserDoctor()">
+
+  <div class="container-fluid" style="margin: 30px; text-align: center;">
+    <h1>Manage Medication Plans for patient {{patient?.firstName}} {{patient.lastName}}</h1>
+    <p>The list of available medications</p>
+  </div>
+
+  <div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Side effects</th>
+        <th scope="col">Dosage</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let medication of medications; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <strong> {{ medication.name }} </strong>
+        </td>
+        <td> {{ medication.sideEffects }} </td>
+        <td> {{ medication.dosage }} </td>
+        <td> 
+          <button class="btn my-2 my-sm-0"
+            [ngClass]="selectedMedication[i] === false ? 'btn-outline-success' : 'btn-success'"  
+            (click)="selectMedication(i)">
+            {{selectedMedication[i] === false ? 'Add' : 'Selected'}}
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <div class="col-6 col-md-4">
+      <div class="form-group">
+        <label for="intake">Intake intervals</label>
+        <input type="text"  class="form-control" #quantity="ngModel" id="intake" type="text" [(ngModel)]="currentMedicationPlan.intakeIntervals" name="intake">
+      </div>
+      <div class="form-group">
+        <label for="startdate">Start date</label>
+        <input type="date"  class="form-control" #birthdate="ngModel" id="startdate" [(ngModel)]="currentMedicationPlan.startDate" name="startdate"> 
+      </div>
+      <div class="form-group">
+        <label for="enddate">End date</label>
+        <input type="date"  class="form-control" #birthdate="ngModel" id="enddate" [(ngModel)]="currentMedicationPlan.endDate" name="enddate"> 
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary btn-lg create" (click)="createPlan()" >Create Medication Plan</button>
+
+</div>
+
+<h2>Registered Medication Plans</h2>
+
+<div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Start date</th>
+      <th scope="col">End date</th>
+      <th scope="col">Intake interval</th>
+      <th scope="col">Medications</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let plan of medicationPlans; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        <strong> {{ plan.startDate | date }} </strong>
+      </td>
+      <td> <strong> {{ plan.startDate | date }} </strong> </td>
+      <td> {{ plan.intakeIntervals }} </td>
+      <td> 
+        {{ displayMedications(plan.medication) }}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

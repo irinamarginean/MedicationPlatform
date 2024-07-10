@@ -1,0 +1,36 @@
+<div class="container-fluid" style="margin: 30px; text-align: center;">
+  <h1>Patient list</h1>
+  <p>The list of patients registered in the system corresponding to caregiver {{ model.firstName }} {{ model.lastName }}</p>
+  <p>Details about <strong>{{ model.firstName }} {{ model.lastName }}:</strong></p>
+  <p><strong>Birth date: </strong> {{ model.birthDate | date }}</p>
+  <p><strong>Gender: </strong> {{ model.gender }}</p>
+  <p><strong>Address: </strong> {{ model.address }}</p>
+</div>
+
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Last name</th>
+    <th scope="col">First name</th>
+    <th scope="col">Gender</th>
+    <th scope="col">Birth date</th>
+    <th scope="col">Address</th>
+    <th scope="col">Medical record</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let patient of patients; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+      <strong> {{ patient.lastName }} </strong>
+    </td>
+    <td> {{ patient.firstName }} </td>
+    <td> {{ patient.gender }} </td>
+    <td> {{ patient.birthDate | date }} </td>
+    <td> {{ patient.address }} </td>
+    <td> {{ patient.medicalRecord }} </td>
+  </tr>
+  </tbody>
+</table>
